@@ -20,6 +20,14 @@ body {
   max-width: 480px !important;
   border: 1px solid #f5f5f5;
   padding: 0px 18px;
+  padding-bottom: 1rem;
+}
+.root{
+  max-width: 480px;
+}
+.fixed-container{
+  max-width: 480px;
+  width: 100%;
 }
 .header-container{
   display: flex;
@@ -66,11 +74,73 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 }
+.icon-clock{
+  background-color: #fff;
+    display: block;
+    width: 10px;
+    height: 10px;
+    mask: url('/icons/Clock.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Clock.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.icon-call{
+  background-color: #4D4C4E;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Call.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Call.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.icon-chat{
+  background-color: #4D4C4E;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Chat.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Chat.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.icon-camera{
+  background-color: #4D4C4E;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Camera.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Camera.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.icon-setting{
+  background-color: #4D4C4E;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Setting.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Setting.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .bg-search{
   background-color: #504F50;
 }
+.bg-purple{
+  background-color: #7C01F6;
+}
+.bg-gray{
+  background-color: #C8C8C8;
+}
+.bg-semi-black{
+  background-color: #1F1F1F;
+}
 .text-white{
   color: #fff;
+}
+.text-purple{
+  color: #7C01F6;
 }
 .search-container{
   display: flex;
@@ -105,4 +175,43 @@ body {
 }
 .active-user{
   border-radius: 2rem;
+}
+.active-user-text{
+  color: #C8C8C8;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+.chat-section{
+  display: flex;
+  flex-direction: column;
+  gap:0.5rem;
+}
+.chat-container{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #7D7783;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #1f1f1f;
+}
+.img-chat-container{
+  border-radius: 3rem;
+  width: 67.5px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+}
+.unread{
+  height: 18px;
+  width: 18px;
+  justify-content: center;
+  border-radius: 3rem;
+  font-size: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 5% 0% 0% 0%;
+}
+.menu{
+  border-radius: 3rem;
 }
