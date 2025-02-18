@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle"; // ✅ Tambahkan ini
 import Image from "next/image";
+import Link from "next/link";
 
 type dataChat = {
   id: number;
@@ -25,7 +26,7 @@ export default function Home() {
   ];
   return (
     <>
-    <div className="main-container">
+    <div className="main-container bg-[radial-gradient(circle_at_bottom,_rgba(124,1,246,0.6)_10%,_rgba(0,0,0,1)_20%)]">
       <div className="header-container">
         <div className="header-text text-2xl">Messages</div>
         <div className="header-icon">
@@ -101,7 +102,7 @@ export default function Home() {
 
       <div className="chat-section">
       {dataChat.map((data) => (
-      <div key={data.id} className="chat-container gap-2">
+      <Link href="/chat" key={data.id} className="chat-container gap-2">
           <div className="img-chat-container bg-user-1">
             <Image src="/person/person-1.png" alt="" width={personChatWidth} height={personChatHeight} />
           </div>
@@ -115,7 +116,7 @@ export default function Home() {
               <span className="flex justify-end"> <span className="bg-purple aspect-square unread">{data.unread}</span></span>
             </div>
           </div>
-      </div>
+      </Link>
       ))}
       </div>
       
