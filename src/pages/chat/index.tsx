@@ -26,7 +26,7 @@ return (
                 </div>
             </div>
         </div>
-        <div className="calendar-section">
+        <div className="calendar-section my-2">
             <span className="">today</span>
         </div>
         <div className="chat-main">
@@ -43,6 +43,18 @@ return (
                     Yo, ma bro
                 </div>
             </div>
+        </div>
+        <div className="root typing-container flex justify-between fixed bottom-0">
+            <div>
+                <button className="icon-attachment" type="button">
+
+                </button>
+
+            </div>
+            <div className="bg-semi-black flex flex-auto px-2 mx-2">
+                <input type="text" className="btn bg-semi-black" placeholder="ketik pesan disini..." />
+            </div>
+            <div className="icon-send"></div>
         </div>
     </div>
 )

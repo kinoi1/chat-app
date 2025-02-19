@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/bundle"; // ✅ Tambahkan ini
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { fetchMessage } from "../../utils/api";
 
 type dataChat = {
   id: number;
@@ -12,6 +14,7 @@ type dataChat = {
 };
 
 export default function Home() {
+  
   const personWidth = 107;
   const personHeight = 107;
   const personChatWidth = 50;
@@ -24,6 +27,13 @@ export default function Home() {
     { id: 4, name: "kim", unread: 4 },
     { id: 5, name: "ben", unread: 0 },
   ];
+
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetchMessage().then((data:{message:string}) => setMessage(data.message));
+  }, []);
+  console.log(message);
   return (
     <>
     <div className="main-container bg-[radial-gradient(circle_at_bottom,_rgba(124,1,246,0.6)_10%,_rgba(0,0,0,1)_20%)]">

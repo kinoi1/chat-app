@@ -134,6 +134,26 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 }
+.icon-attachment{
+  background-color: #7C01F6;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Attachment.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Attachment.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.icon-send{
+  background-color: #7C01F6;
+    display: block;
+    width: 37px;
+    height: 37px;
+    mask: url('/icons/Send.svg') no-repeat center / contain;
+    -webkit-mask: url('/icons/Send.svg') no-repeat center / contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .icon-ellips.m-0{
   margin-left: 0;
 }
@@ -258,5 +278,9 @@ body {
 }
 .chat-main{
   padding: 0rem 1rem;
+}
+.typing-container{
+  background-color: var(--background);
+  padding: 1rem;
 }
 /* end chat section */
