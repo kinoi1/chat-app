@@ -13,6 +13,7 @@ type dataChat = {
   unread: number;
 };
 
+
 export default function Home() {
   
   const personWidth = 107;
@@ -28,10 +29,10 @@ export default function Home() {
     { id: 5, name: "ben", unread: 0 },
   ];
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetchMessage().then((data:{message:string}) => setMessage(data.message));
+    fetchMessage().then((data: { data: string }[]) => setMessage(data.data));
   }, []);
   console.log(message);
   return (
@@ -111,7 +112,8 @@ export default function Home() {
       </div>
 
       <div className="chat-section">
-      {dataChat.map((data) => (
+      {message.length > 0 ? (
+      message.map((data:{id:number,name:string,unread:number}) => (
       <Link href="/chat" key={data.id} className="chat-container gap-2">
           <div className="img-chat-container bg-user-1">
             <Image src="/person/person-1.png" alt="" width={personChatWidth} height={personChatHeight} />
@@ -127,7 +129,9 @@ export default function Home() {
             </div>
           </div>
       </Link>
-      ))}
+      ))) : (
+        <div> loading...</div>
+      )}
       </div>
       
     </div>

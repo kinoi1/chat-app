@@ -1,12 +1,31 @@
 "use client"
-// import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle"; // ✅ Tambahkan ini
 import Image from "next/image";
+import { useState } from "react";
+import "../../lib/fontawesome"; // Import konfigurasi ikon
+import dynamic from "next/dynamic";
+import Picker from "emoji-picker-react";
 
-export default function chat() {
+// Gunakan dynamic import untuk FontAwesomeIcon
+const FontAwesomeIcon = dynamic(
+  () => import("@fortawesome/react-fontawesome").then((mod) => mod.FontAwesomeIcon),
+  { ssr: false }
+);
+
+export default function Chat() {
     const personChatWidth = 50;
     const personChatHeight = 50;
+    
+
+    const [inputStr, setInputStr] = useState("");
+    const [showPicker, setShowPicker] = useState(false);
+
+  const onEmojiClick = (event:any) => {
+    setInputStr((prevInput) => prevInput + event.emoji);
+    setShowPicker(false);
+
+  };
 return (
     <div className="root min-h-screen bg-[radial-gradient(circle_at_bottom,_rgba(124,1,246,0.6)_10%,_rgba(0,0,0,1)_20%)]">
         <div className="main-container-chat p-4  bg-semi-black">
@@ -44,7 +63,14 @@ return (
                 </div>
             </div>
         </div>
+
         <div className="root typing-container flex justify-between fixed bottom-0">
+      
+            <div className="absolute bottom-[4rem]">
+            {showPicker && (
+                <Picker pickerStyle={{ width: "100%" }} height={450} onEmojiClick={onEmojiClick} />
+            )} 
+            </div>
             <div>
                 <button className="icon-attachment" type="button">
 
@@ -52,7 +78,12 @@ return (
 
             </div>
             <div className="bg-semi-black flex flex-auto px-2 mx-2">
-                <input type="text" className="btn bg-semi-black" placeholder="ketik pesan disini..." />
+                <button  className="text-2xl mr-2" onClick={() => setShowPicker((val) => !val)}>
+                <FontAwesomeIcon icon="smile" className="text-gray" />                </button>
+                <input type="text" className="btn bg-semi-black" placeholder="ketik pesan disini..." 
+                value={inputStr}
+                onChange={(e) => setInputStr(e.target.value)}
+                />
             </div>
             <div className="icon-send"></div>
         </div>

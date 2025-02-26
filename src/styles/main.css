@@ -178,6 +178,9 @@ body {
 .text-purple{
   color: #7C01F6;
 }
+.text-gray{
+  color: #C8C8C8;
+}
 .search-container{
   display: flex;
   height: 48px;
