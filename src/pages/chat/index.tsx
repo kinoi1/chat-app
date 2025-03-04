@@ -6,6 +6,7 @@ import { useState } from "react";
 import "../../lib/fontawesome"; // Import konfigurasi ikon
 import dynamic from "next/dynamic";
 import Picker from "emoji-picker-react";
+import { sendMessage } from "../../../utils/api";
 
 // Gunakan dynamic import untuk FontAwesomeIcon
 const FontAwesomeIcon = dynamic(
@@ -16,15 +17,20 @@ const FontAwesomeIcon = dynamic(
 export default function Chat() {
     const personChatWidth = 50;
     const personChatHeight = 50;
-    
-
     const [inputStr, setInputStr] = useState("");
     const [showPicker, setShowPicker] = useState(false);
 
   const onEmojiClick = (event:any) => {
     setInputStr((prevInput) => prevInput + event.emoji);
     setShowPicker(false);
+  };
 
+  const handleSendMessage = async () => {
+    console.log('ce');
+    const response = await sendMessage(inputStr);
+    if (response) {
+        setInputStr(""); // Kosongkan input setelah dikirim
+    }
   };
 return (
     <div className="root min-h-screen bg-[radial-gradient(circle_at_bottom,_rgba(124,1,246,0.6)_10%,_rgba(0,0,0,1)_20%)]">
@@ -80,12 +86,12 @@ return (
             <div className="bg-semi-black flex flex-auto px-2 mx-2">
                 <button  className="text-2xl mr-2" onClick={() => setShowPicker((val) => !val)}>
                 <FontAwesomeIcon icon="smile" className="text-gray" />                </button>
-                <input type="text" className="btn bg-semi-black" placeholder="ketik pesan disini..." 
+                <input type="text" className="btn bg-semi-black flex flex-auto" placeholder="ketik pesan disini..." 
                 value={inputStr}
                 onChange={(e) => setInputStr(e.target.value)}
                 />
             </div>
-            <div className="icon-send"></div>
+            <button className="icon-send" onClick={handleSendMessage}></button>
         </div>
     </div>
 )

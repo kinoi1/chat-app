@@ -113,7 +113,7 @@ export default function Home() {
 
       <div className="chat-section">
       {message.length > 0 ? (
-      message.map((data:{id:number,name:string,unread:number}) => (
+      message.map((data:{id:number,name:string,unread:number,text:string}) => (
       <Link href="/chat" key={data.id} className="chat-container gap-2">
           <div className="img-chat-container bg-user-1">
             <Image src="/person/person-1.png" alt="" width={personChatWidth} height={personChatHeight} />
@@ -121,7 +121,7 @@ export default function Home() {
           <div className="flex flex-row flex-auto">
             <div className="flex flex-col flex-auto justify-evenly">
               <span>{data.name}</span>
-              <span>Hey, whats up</span>
+              <span>{data.text}</span>
             </div>
             <div className="flex flex-col justify-evenly">
               <span className="text-purple font-semibold">4 min</span>
