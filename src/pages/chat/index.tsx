@@ -14,6 +14,14 @@ const FontAwesomeIcon = dynamic(
   { ssr: false }
 );
 
+type dataPost = {
+    senderId:number,
+    chatRoomId:number,
+    text:string,
+    imageUrl:string
+};
+
+
 export default function Chat() {
     const personChatWidth = 50;
     const personChatHeight = 50;
@@ -26,8 +34,16 @@ export default function Chat() {
   };
 
   const handleSendMessage = async () => {
-    console.log('ce');
-    const response = await sendMessage(inputStr);
+    const dataPost:dataPost[] = [
+        {
+            senderId:1,
+            chatRoomId:1,
+            text:inputStr,
+            imageUrl:''
+        }
+    ]
+    const response = await sendMessage(dataPost);
+    console.log(response);
     if (response) {
         setInputStr(""); // Kosongkan input setelah dikirim
     }

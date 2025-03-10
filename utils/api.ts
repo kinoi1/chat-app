@@ -3,18 +3,23 @@ export const fetchMessage = async () => {
     return res.json();
   };
 
-export const sendMessage = async (message: string) => {
-  if (!message.trim()) return;
+  type message = {
+    senderId:number,
+    chatRoomId:number,
+    text:string,
+    imageUrl:string
+};
+
+export const sendMessage = async (message: message[]) => {
 
   try {
     const response = await fetch("http://localhost:4000/send-chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: message }),
+      body: JSON.stringify(message),
     });
 
     const data = await response.json();
-    console.log("Server response:", data);
     return data;
   } catch (error) {
     console.error("Error sending message:", error);
